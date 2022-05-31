@@ -13,7 +13,7 @@ VocIDS = [917895479545712720, 917895581291135036, 917924829229875240, 9179249009
 level = ["𝐋𝐚𝐧𝐠𝐚", "𝐇𝐨𝐰𝐥", "𝐇𝐚𝐤𝐮", "𝐌𝐮𝐬𝐭𝐚𝐧𝐠", "𝐒𝐚𝐧", "𝐊𝐢𝐫𝐢𝐠𝐚𝐤𝐮𝐫𝐞", "𝐌𝐨𝐧𝐤𝐞"]
 levelnum = [2, 5, 10, 15, 20, 30, 100]
  
-cluster = os.environ['MONGO']
+cluster = MongoClient("mongodb+srv://admin:ray@discord-js-v13.k5wte.mongodb.net/Discord-js-v13?retryWrites=true&w=majority")
  
 collection_name = cluster["data"]["levelings"] 
  
