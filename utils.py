@@ -21,6 +21,28 @@ class utils(commands.Cog):
       elif ctx.channel.id == bot_admin:
         embed.add_field(name="``Administration XP`` :vampire:", value=f"> {prefix}givexp <nombre> (membre) : *Permet d'ajouter de l'XP à un membre du serveur.* \n > {prefix}removexp <nombre> (membre): *Permet de retirer de l'XP à un membre du serveur.*", inline=False)
         await ctx.channel.send(embed=embed)
+      @commands.command()
+      async def pic(self, ctx, *, member : discord.Member = None):
+        member = ctx.author if not member else member
+        embed = discord.Embed(title= member.name + '#' + member.discriminator, color=0X800808)
+        embed.set_image(url=member.avatar.url)
+        if ctx.channel.id == bot_channel:
+          await ctx.send(embed=embed)
+  
+      @commands.command()
+      async def banner(self, ctx, *, member : discord.Member = None):
+        member = ctx.author if not member else member
+        req = await self.client.http.request(discord.http.Route("GET", "/users/{uid}", uid=member.id))
+        banner_id = req["banner"]
+        if banner_id:
+          if banner_id.startswith("a_"):
+            embed = discord.Embed(title= member.name + '#' + member.discriminator, color=0X800808)
+            embed.set_image(url=f"https://cdn.discordapp.com/banners/{member.id}/{banner_id}.gif?size=1024")
+          else:
+            embed = discord.Embed(title= member.name + '#' + member.discriminator, color=0X800808)
+            embed.set_image(url=f"https://cdn.discordapp.com/banners/{member.id}/{banner_id}?size=1024")
+      if ctx.channel.id == bot_channel:
+        await ctx.send(embed=embed)
 
 
         
