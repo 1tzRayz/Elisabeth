@@ -11,7 +11,7 @@ class users(commands.Cog):
     async def pic(self, ctx, *, member : discord.Member = None):
         member = ctx.author if not member else member
         em = discord.Embed(title = member.name + '#' + member.discriminator, color=0X800808)
-        em.set_image(url=member.avatar.url)
+        em.set_image(url=member.avatar_url)
         if ctx.channel.id == bot_channel:
             await ctx.send(embed=em)
     
