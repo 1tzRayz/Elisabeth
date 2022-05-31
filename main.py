@@ -2,6 +2,7 @@ import discord
 import os
 import levels
 import utils
+import users
 import LoL
 from discord.ext import commands
 from webserver import keep_alive
@@ -9,7 +10,7 @@ from webserver import keep_alive
 
 
 token = os.environ['TOKEN']
-cogs = [levels, utils, LoL] #vocal  
+cogs = [levels, utils, LoL, users] #vocal  
 bot_admin = 931454068033986560
 prefix = '-'
 
