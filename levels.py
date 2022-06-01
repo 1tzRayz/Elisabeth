@@ -53,8 +53,7 @@ class levels(commands.Cog):
                               
     @commands.command(aliases=['xp', 'level', 'Rank'])
     async def rank(self, ctx, member : discord.User = None):
-      if member == None:
-        member = ctx.author
+      member = ctx.author if not member else member
       if ctx.channel.id in bot_channel:
             stats = collection_name.find_one({"id" : member.id})
             if stats is None:
@@ -100,28 +99,6 @@ class levels(commands.Cog):
                 if i == 11:
                     break
             await ctx.channel.send(embed=embed)
-
-    @commands.command()
-    async def givexp(self,ctx, number : int, member : discord.Member = None):
-      if member == None:
-        member = ctx.author
-      if (ctx.channel.id == admin_chan):
-        stats = collection_name.find_one({"id":member.id})
-        xp = stats["xp"] + number
-        collection_name.update_one({"id":member.id}, {"$set":{"xp":xp}})
-        given = discord.Embed(color=0X800808,title=f"Tu viens de donner {number} points d'XP à l'utilisateur {member.name} ! <:grochat:935628681064357888>")
-        await ctx.send(embed=given)
-    
-    @commands.command()
-    async def removexp(self,ctx, number : int, member : discord.Member = None):
-      if member == None:
-        member = ctx.author
-      if (ctx.channel.id == admin_chan):
-        stats = collection_name.find_one({"id":member.id})
-        xp = stats["xp"] - number
-        collection_name.update_one({"id":member.id}, {"$set":{"xp":xp}})
-        removed = discord.Embed(color=0X800808,title=f"Tu viens de te retirer {number} points d'XP à {member.name} ! <:grochat:935628681064357888>")
-        await ctx.send(embed=removed)
 
 
 def setup(client):
