@@ -15,6 +15,7 @@ class utils(commands.Cog):
         em.add_field(name="```-pic [membre]```", value="Permet de récupérer la photo de profil de quelqu'un.", inline=False)
         em.add_field(name="```-banner [membre]```", value="Permet de récupérer la bannière de quelqu'un.", inline=False)
         em.add_field(name="```-level [membre]```", value="Permet d'afficher des informations sur l'XP de quelqu'un.", inline=False)
+        em.add_field(name="```-profile [membre] (soon)```", value="Donne le profil de quelqu'un.", inline=False)
         em.add_field(name="```-leaderboard / -lb```", value="Permet d'afficher le classement d'XP du serveur.", inline=False)
         em.add_field(name="```-whos```", value="Demande qui est le meilleur joueur sur <champion de LoL>.", inline=False)
         await ctx.send(embed=em)
