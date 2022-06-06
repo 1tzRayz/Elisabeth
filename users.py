@@ -45,10 +45,10 @@ class users(commands.Cog):
   
         if banner_id:
             if banner_id.startswith("a_"):
-                url = f'https://cdn.nextcordapp.com/banners/{member.id}/{banner_id}.gif?size=1024'
+                url = f'https://cdn.discordapp.com/banners/{member.id}/{banner_id}.gif?size=1024'
                 em.set_image(url=url)
             else:
-                url = f'https://cdn.nextcordapp.com/banners/{member.id}/{banner_id}?size=1024'
+                url = f'https://cdn.discordapp.com/banners/{member.id}/{banner_id}?size=1024'
                 em.set_image(url=url)
         if ctx.channel.id == bot_channel:
             await ctx.send(embed=em)
