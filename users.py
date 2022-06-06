@@ -39,7 +39,7 @@ class users(commands.Cog):
         em = nextcord.Embed(title=f'Profil de {member.name}', color=0X880808)
         em.set_thumbnail(url=member.avatar.url)
         em.add_field(name="```Informations générales de ton compte :```", value=f'> **Mention** - <@{member.id}> \n > **Pseudonyme** - {member.name} \n > **Discriminant** - #{member.discriminator} \n > **Identifiant** - {member.id} \n > **Création du compte** - {create} ', inline=False)
-        em.add_field(name="```Informations relatives au serveur :```", value=f'> **Surnom** - {member.display_name} \n > **Rôle le plus élevé** - {member.top_role} \n > **Arrivée sur le serveur** - {join} ', inline=False)
+        em.add_field(name="```Informations relatives au serveur :```", value=f'> **Surnom** - {member.display_name} \n > **Rôle le plus élevé** - <@&{member.top_role.id}> \n > **Arrivée sur le serveur** - {join} ', inline=False)
         req = await self.client.http.request(nextcord.http.Route("GET", "/users/{uid}", uid=member.id))
         banner_id = req["banner"]
   
