@@ -12,7 +12,7 @@ class users(commands.Cog):
     async def pic(self, ctx, *, member : nextcord.Member = None):
         member = ctx.author if not member else member
         em = nextcord.Embed(title = member.name + '#' + member.discriminator, color=0X800808)
-        em.set_image(url=member.avatar_url)
+        em.set_image(url=member.avatar.url)
         if ctx.channel.id == bot_channel:
             await ctx.send(embed=em)
     
@@ -24,10 +24,10 @@ class users(commands.Cog):
         if banner_id:
           if banner_id.startswith("a_"):
             embed = nextcord.Embed(title= member.name + '#' + member.discriminator, color=0X800808)
-            embed.set_image(url=f"https://cdn.nextcordapp.com/banners/{member.id}/{banner_id}.gif?size=1024")
+            embed.set_image(url=f"https://cdn.discordapp.com/banners/{member.id}/{banner_id}.gif?size=1024")
           else:
             embed = nextcord.Embed(title= member.name + '#' + member.discriminator, color=0X800808)
-            embed.set_image(url=f"https://cdn.nextcordapp.com/banners/{member.id}/{banner_id}?size=1024")
+            embed.set_image(url=f"https://cdn.discordapp.com/banners/{member.id}/{banner_id}?size=1024")
         if ctx.channel.id == bot_channel:
             await ctx.send(embed=embed)
             
