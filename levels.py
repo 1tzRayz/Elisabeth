@@ -1,7 +1,7 @@
-import discord
+import nextcord
 import os
 import asyncio
-from discord.ext import commands
+from nextcord.ext import commands
 from pymongo import MongoClient
 
  
@@ -13,7 +13,7 @@ VocIDS = [917895479545712720, 917895581291135036, 917924829229875240, 9179249009
 level = ["𝐋𝐚𝐧𝐠𝐚", "𝐇𝐨𝐰𝐥", "𝐇𝐚𝐤𝐮", "𝐌𝐮𝐬𝐭𝐚𝐧𝐠", "𝐒𝐚𝐧", "𝐊𝐢𝐫𝐢𝐠𝐚𝐤𝐮𝐫𝐞", "𝐌𝐨𝐧𝐤𝐞"]
 levelnum = [2, 5, 10, 15, 20, 30, 100]
  
-cluster = MongoClient("mongodb+srv://admin:ray@discord-js-v13.k5wte.mongodb.net/Discord-js-v13?retryWrites=true&w=majority")
+cluster = MongoClient("mongodb+srv://admin:ray@discord-js-v13.k5wte.mongodb.net/discord-js-v13?retryWrites=true&w=majority")
  
 collection_name = cluster["data"]["levelings"] 
  
@@ -46,18 +46,18 @@ class levels(commands.Cog):
                         await message.reply(f"Bravo, tu viens de passer au niveau  {lvl} !")
                         for i in range(len(level)):
                             if lvl == levelnum[i]:
-                                await message.author.add_roles(discord.utils.get(message.author.guild.roles, name=level[i]))
-                                embed = discord.Embed(color = 0X800808, description=f"{message.author.mention}. Félicitations ! Tu viens d'obtenir un nouveau rôle : **{level[i]}**.")
+                                await message.author.add_roles(nextcord.utils.get(message.author.guild.roles, name=level[i]))
+                                embed = nextcord.Embed(color = 0X800808, description=f"{message.author.mention}. Félicitations ! Tu viens d'obtenir un nouveau rôle : **{level[i]}**.")
                                 embed.set_author(name = message.author.name, icon_url=message.author.avatar_url)
                                 await message.channel.send(embed=embed)
                               
     @commands.command(aliases=['xp', 'level', 'Rank'])
-    async def rank(self, ctx, member : discord.User = None):
+    async def rank(self, ctx, member : nextcord.User = None):
       member = ctx.author if not member else member
       if ctx.channel.id in bot_channel:
             stats = collection_name.find_one({"id" : member.id})
             if stats is None:
-                embed = discord.Embed(color=0X800808,description="Tu n'as envoyé aucun message, tu ne possèdes donc pas d'XP !")
+                embed = nextcord.Embed(color=0X800808,description="Tu n'as envoyé aucun message, tu ne possèdes donc pas d'XP !")
                 await ctx.channel.send(embed=embed)
             else:
                 xp = stats["xp"]
@@ -74,7 +74,7 @@ class levels(commands.Cog):
                     rank += 1
                     if stats["id"] == x["id"]:
                         break
-                embed = discord.Embed(color=0X800808,title="Information sur l'XP de {}".format(member.name))
+                embed = nextcord.Embed(color=0X800808,title="Information sur l'XP de {}".format(member.name))
                 embed.add_field(name="Pseudonyme", value=member.mention, inline=True)
                 embed.add_field(name="XP", value=f"{xp}/{int(200*((1/2)*lvl))}", inline=True)
                 embed.add_field(name="Niveau", value=f"{lvl}", inline=True)
@@ -87,7 +87,7 @@ class levels(commands.Cog):
         if (ctx.channel.id in bot_channel):
             rankings = collection_name.find().sort("xp",-1) 
             i = 1
-            embed = discord.Embed(color=0X800808,title="Classement du serveur :")
+            embed = nextcord.Embed(color=0X800808,title="Classement du serveur :")
             for x in rankings:
                 try:
                     temp = ctx.guild.get_member(x["id"])
