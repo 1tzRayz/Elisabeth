@@ -40,7 +40,7 @@ class users(commands.Cog):
         em.set_thumbnail(url=member.avatar.url)
         em.add_field(name="```Informations générales de ton compte :```", value=f'> **Mention** - <@{member.id}> \n > **Pseudonyme** - {member.name} \n > **Discriminant** - #{member.discriminator} \n > **Identifiant** - {member.id} \n > **Création du compte** - {create} ', inline=False)
         em.add_field(name="```Informations relatives au serveur :```", value=f'> **Surnom** - {member.display_name} \n > **Rôle le plus élevé** - {member.top_role} \n > **Arrivée sur le serveur** - {join} ', inline=False)
-        req = await client.http.request(nextcord.http.Route("GET", "/users/{uid}", uid=member.id))
+        req = await self.client.http.request(nextcord.http.Route("GET", "/users/{uid}", uid=member.id))
         banner_id = req["banner"]
   
         if banner_id:
