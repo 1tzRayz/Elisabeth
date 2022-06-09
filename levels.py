@@ -48,7 +48,7 @@ class levels(commands.Cog):
                             if lvl == levelnum[i]:
                                 await message.author.add_roles(nextcord.utils.get(message.author.guild.roles, name=level[i]))
                                 embed = nextcord.Embed(color = 0X800808, description=f"{message.author.mention}. Félicitations ! Tu viens d'obtenir un nouveau rôle : **{level[i]}**.")
-                                embed.set_author(name = message.author.name, icon_url=message.author.avatar_url)
+                                embed.set_author(name = message.author.name, icon_url=message.author.avatar.url)
                                 await message.channel.send(embed=embed)
                               
     @commands.command(aliases=['xp', 'level', 'Rank'])
@@ -79,7 +79,7 @@ class levels(commands.Cog):
                 embed.add_field(name="XP", value=f"{xp}/{int(200*((1/2)*lvl))}", inline=True)
                 embed.add_field(name="Niveau", value=f"{lvl}", inline=True)
                 embed.add_field(name="Barre de progression :", value=boxes * ":blue_square:" + (20-boxes) * ":white_large_square:", inline=False)
-                embed.set_thumbnail(url=member.avatar_url)
+                embed.set_thumbnail(url=member.avatar.url)
                 await ctx.channel.send(embed=embed)
 
     @commands.command(aliases=['lb', 'classement', 'Lb', 'Leaderboard'])
