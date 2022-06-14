@@ -46,12 +46,12 @@ async def snipe(ctx):
     try:
         embed = nextcord.Embed(description=contents , color=0X800808, timestamp=time)
         embed.set_image(url=bob_proxy_url)
-        embed.set_author(name=f"{author.name}#{author.discriminator}", icon_url=author.avatar_url)
+        embed.set_author(name=f"{author.name}#{author.discriminator}", icon_url=author.avatar.url)
         embed.set_footer(text=f"Supprimé dans : #{channel_name}")
         await ctx.channel.send(embed=embed)
     except:
         embed = nextcord.Embed(description=contents , color=0X800808, timestamp=time)
-        embed.set_author(name=f"{author.name}#{author.discriminator}", icon_url=author.avatar_url)
+        embed.set_author(name=f"{author.name}#{author.discriminator}", icon_url=author.avatar.url)
         embed.set_footer(text=f"Supprimé dans : #{channel_name}")
         await ctx.channel.send(embed=embed)
 
