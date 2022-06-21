@@ -5,7 +5,6 @@ import utils
 import users
 import LoL
 from nextcord.ext import commands
-from webserver import keep_alive
 
 
 
@@ -62,7 +61,7 @@ async def clear(ctx , amount=5):
 
 for i in range(len(cogs)):
     cogs[i].setup(client)
-    print('Setup successful.')
+    print('Cog lancés.')
     
-keep_alive()
+
 client.run(token)
