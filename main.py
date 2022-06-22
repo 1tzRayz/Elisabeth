@@ -11,7 +11,7 @@ from nextcord.ext import commands
 token = os.environ['TOKEN']
 cogs = [levels, utils, LoL, users] #vocal  
 bot_admin = 931454068033986560
-prefix = '-'
+prefix = '+'
 
 
 client = commands.AutoShardedBot(command_prefix=prefix, intents = nextcord.Intents.all(), activity = nextcord.Activity(name=f'{prefix}help pour de l\'aide', type=5))
@@ -61,7 +61,7 @@ async def clear(ctx , amount=5):
 
 for i in range(len(cogs)):
     cogs[i].setup(client)
-    print('Cog lancés.')
+    print(f'Catégorie {cogs[i]} chargée.')
     
 
 client.run(token)
