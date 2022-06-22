@@ -19,7 +19,7 @@ class utils(commands.Cog):
         em.add_field(name="```+leaderboard | -lb```", value="Permet d'afficher le classement d'XP du serveur.", inline=False)
         em.add_field(name="```+ban | +unban [membre]```", value="Permet de bannir ou de débannir un membre.", inline=False)
         em.add_field(name="```+lock | +unlock```", value="Permet de lock ou unlock un channel.", inline=False)
-        em.add_field(name="```-kick [membre]```", value="Permet de kick un membre.", inline=False)
+        em.add_field(name="```+kick [membre]```", value="Permet de kick un membre.", inline=False)
         if ctx.channel.id == bot_channel:
           await ctx.send(embed=em)
       
