@@ -51,10 +51,6 @@ async def snipe(ctx):
         embed.set_footer(text=f"Supprimé dans : #{channel_name}")
         await ctx.channel.send(embed=embed)
 
-@client.command(name = 'clear')
-@commands.has_permissions(manage_messages = True)
-async def clear(ctx , amount=5):
-  await ctx.channel.purge(limit=amount + 1)
 
 for i in range(len(cogs)):
     cogs[i].setup(client)
