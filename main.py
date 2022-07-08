@@ -33,6 +33,16 @@ async def on_message_delete(message):
     else:
         client.sniped_messages[message.guild.id] = (message.content,message.author, message.channel.name, message.created_at)
 
+        
+@client.event
+async def on_message(message):
+    x = client.get_channel(995091597509279804)
+    if "discord.gg" in message.content.lower():
+        await message.delete()
+        await message.channel.send("Tu n'as pas le droit d'envoyer d'invitation sur ce serveur.")
+        await x.send(f"{message.author.mention} à envoyé une invitation dans le salon {message.channel.mention}.")
+        await client.process_commands(message)
+
 @client.command()
 async def snipe(ctx):
     try:
