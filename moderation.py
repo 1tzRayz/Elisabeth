@@ -63,8 +63,8 @@ class moderation(commands.Cog):
     x = client.get_channel(995091597509279804)
     if "discord.gg" in message.content.lower():
         await message.delete()
-        await message.channel.send("Test")
-        await x.send(f"{message.author.mention} à envoyé une invitation dans le salon {message.channel.mention}")
+        await message.channel.send("Tu n'as pas le droit d'envoyer d'invitation sur ce serveur !")
+        await x.send(f"{message.author.mention} à envoyé une invitation dans le salon {message.channel.mention}.")
         await client.process_commands(message)
       
    
