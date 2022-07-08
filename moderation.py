@@ -57,6 +57,15 @@ class moderation(commands.Cog):
       await member.kick(reason = raison)
       await ctx.channel.send(embed=embed)
       return
+    
+    @command.Cog.listener()
+    async def on_message(message):
+    x = client.get_channel(995091597509279804)
+    if "discord.gg" in message.content.lower():
+        await message.delete()
+        await message.channel.send("Test")
+        await x.send(f"{message.author.mention} à envoyé une invitation dans le salon {message.channel.mention}")
+        await client.process_commands(message)
       
    
 def setup(client):
