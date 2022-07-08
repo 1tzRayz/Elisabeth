@@ -6,7 +6,7 @@ class antilink(commands.Cog):
         self.client = client
         
      
-    command.Cog.listener()
+    @commands.Cog.listener()
     async def on_message(self, message):
         x = self.client.get_channel(995091597509279804)
         if "discord.gg" in message.content.lower():
