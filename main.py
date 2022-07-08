@@ -41,7 +41,6 @@ async def on_message(message):
         await message.delete()
         await message.channel.send("Tu n'as pas le droit d'envoyer d'invitation sur ce serveur.")
         await x.send(f"{message.author.mention} à envoyé une invitation dans le salon {message.channel.mention}.")
-        await client.process_commands(message)
 
 @client.command()
 async def snipe(ctx):
