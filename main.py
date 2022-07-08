@@ -1,12 +1,12 @@
 import nextcord
 import os
-import levels, utils, moderation, users, LoL
+import levels, utils, moderation, users, LoL, antilink
 from nextcord.ext import commands
 
 
 
 token = os.environ['TOKEN']
-cogs = [levels, utils, users, moderation, LoL] 
+cogs = [levels, utils, users, moderation, LoL, antilink] 
 bot_admin = 931454068033986560
 prefix = '+'
 
@@ -34,13 +34,6 @@ async def on_message_delete(message):
         client.sniped_messages[message.guild.id] = (message.content,message.author, message.channel.name, message.created_at)
 
         
-@client.event
-async def on_message(message):
-    x = client.get_channel(995091597509279804)
-    if "discord.gg" in message.content.lower():
-        await message.delete()
-        await message.channel.send("Tu n'as pas le droit d'envoyer d'invitation sur ce serveur.")
-        await x.send(f"{message.author.mention} à envoyé une invitation dans le salon {message.channel.mention}.")
 
 @client.command()
 async def snipe(ctx):
