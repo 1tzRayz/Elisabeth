@@ -1,12 +1,12 @@
 import nextcord
 import os
-import levels, utils, moderation, users, LoL, antilink
+import levels, utils, moderation, users, LoL, antilink, memberlog
 from nextcord.ext import commands
 
 
 
 token = os.environ['TOKEN']
-cogs = [levels, utils, users, moderation, LoL, antilink] 
+cogs = [levels, utils, users, moderation, LoL, antilink, memberlog] 
 bot_admin = 931454068033986560
 prefix = '+'
 
